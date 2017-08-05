@@ -2,14 +2,7 @@
 import numpy
 from eagleocr.lib import colorChange
 from eagleocr.split import wordPosition
-from eagleocr.split import imgDispose
 from PIL import Image
-
-
-def _get_2v_img(img_path):
-    img = Image.open(img_path)
-    img_2v, sf = imgDispose.get_2v_img(img)
-    return img_2v, sf
 
 
 def _word_position(img_array, sf, transpose=False):
@@ -32,8 +25,7 @@ def _save_word_img(word_array, img_name, hyaline=False):
     word.save(img_name)
 
 
-def words_2_img(img_path, save_folder, trans=True, hyaline=True):
-    img_2v, sf = _get_2v_img(img_path)
+def words_2_img(img_2v, sf, save_folder, trans=True, hyaline=True):
     img_array = numpy.array(img_2v)
     if trans is True:
         img_array = img_array.transpose()
