@@ -32,7 +32,6 @@ def _check_x(rows):
             i += 1
             continue
 
-        # 以下判断半个字到底和谁合并
         # 与上一个字的距离比平均字距小的多
         if words_dis_mean / (words_dis[i - 1] + 0.00001) >= wssd:
             new_word_heigh = rows[i][1] - new_rows[-1][0]
