@@ -38,5 +38,5 @@ def words_2_img(img_2v, sf, save_folder, trans=True, hyaline=True):
         name = '{0}.png'.format(k)
         wnames[k] = {'name': name, 'x': x, 'y': y}
         img_name = '{0}/{1}'.format(save_folder, name)
-        _save_word_img(word_array, img_name, hyaline=True)
+        _save_word_img(word_array, img_name, hyaline=hyaline)
     return wnames
