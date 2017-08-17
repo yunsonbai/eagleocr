@@ -13,7 +13,7 @@ def _check_x(rows):
     words_dis = []
     rows_len = len(rows)
     if rows_len <= 1:
-        return []
+        return rows
     for i in range(rows_len - 1):
         word_dis.append(rows[i][1] - rows[i][0])
         words_dis.append(rows[i + 1][0] - rows[i][1])
