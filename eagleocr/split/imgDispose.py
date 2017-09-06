@@ -29,3 +29,13 @@ def get_2v_img(source_img, sf=1.0):
     img = Image.fromarray(tmp_array)
 
     return img, sf
+
+
+def rgba_get_2v_img(img):
+    '''
+    rgba img to 2v img
+    '''
+    x, y = img.size
+    p = Image.new('RGBA', img.size, (255, 255, 255))
+    p.paste(img, (0, 0, x, y), img)
+    return p
