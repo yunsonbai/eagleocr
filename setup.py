@@ -13,7 +13,7 @@ def get_packages(package):
 
 setup(
     name="eagleocr",
-    version="0.1",
+    version="0.1.1",
     packages=get_packages('eagleocr'),
     author="yunsonbai",
     author_email='1942893504@qq.com',
