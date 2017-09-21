@@ -81,7 +81,7 @@ def _check_x(rows):
     return new_rows
 
 
-def get_words_x(img_array, sf=1.0):
+def get_words_x(img_array, sf=1.0, x=True):
     '''
     img_array: numpy.array from img
     '''
@@ -108,7 +108,8 @@ def get_words_x(img_array, sf=1.0):
             rows.append(tmp_row)
             tmp_row = []
             first = True
-    rows = _check_x(rows)
+    if x is False:
+        rows = _check_x(rows)
     return rows
 
 
@@ -118,7 +119,7 @@ def get_words_y(img_array, transposed=False, sf=1.0):
     transposed: bool
     '''
     word_y = []
-    rows_x = get_words_x(img_array, sf=sf)
+    rows_x = get_words_x(img_array, sf=sf, x=False)
     for rows in rows_x:
         tmp_arrary = img_array[rows[0]: rows[1]]
         if tmp_arrary.mean() > 230:
@@ -132,7 +133,11 @@ def get_words_position(img_array, transpose, sf=1.0):
     img: Image
     transpose: bool
     '''
-    rows_x = get_words_x(img_array, sf=sf)
+    rows_x_s = get_words_x(img_array, sf=sf)
+    rows_x = []
+    for x in rows_x_s:
+        if (x[1] - x[0]) > 25:
+            rows_x.append(x)
     rows_y = []
     for rows in rows_x:
         row_img = img_array[rows[0]:rows[1]]
