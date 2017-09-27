@@ -14,11 +14,12 @@ def get_2v_img(source_img, sf=1.0):
     w, h = source_img.size
     var_s = 5000
     noiseimg = imgDenoise.denoisecolor(source_img)
-    img = imgCorrect.contrast(noiseimg, p=5.0)
+    # img = imgCorrect.contrast(noiseimg, p=5.0)
+    img = imgCorrect.contrast(noiseimg, p=2.0)
     img = img.convert("L")
     img_array = numpy.array(img)
     sf = img_array.var() / var_s
-    mean = img_array.mean() - 60 * (1 - sf)
+    mean = img_array.mean() - 80 * (1 - sf)
 
     img_array = img_array * 1.15
     tmp_array = img_array - mean

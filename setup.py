@@ -20,7 +20,7 @@ setup(
     url="http://www.yunsonbai.top",
     description='Image text recognition',
     install_requires=[
-        'Pillow==3.2.0', 'opencv-python==3.2.0.7', 'numpy==1.13.0',
+        'Pillow==3.2.0', 'opencv-python==3.2.0.7', 'numpy==1.13.1',
         'tesserocr==2.2.2'],
     zip_safe=False,
     classifiers=[
