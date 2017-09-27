@@ -113,10 +113,9 @@ def get_words_x(img_array, sf=1.0, x=True):
     return rows
 
 
-def get_words_y(img_array, transposed=False, sf=1.0):
+def get_words_y(img_array, sf=1.0):
     '''
     img_array: numpy.array from img
-    transposed: bool
     '''
     word_y = []
     rows_x = get_words_x(img_array, sf=sf, x=False)
@@ -128,7 +127,7 @@ def get_words_y(img_array, transposed=False, sf=1.0):
     return word_y
 
 
-def get_words_position(img_array, transpose, sf=1.0):
+def get_words_position(img_array, sf=1.0):
     '''
     img: Image
     transpose: bool
@@ -142,8 +141,7 @@ def get_words_position(img_array, transpose, sf=1.0):
     for rows in rows_x:
         row_img = img_array[rows[0]:rows[1]]
         word_y = get_words_y(
-            row_img.transpose(),
-            transposed=transpose, sf=sf)
+            row_img.transpose(), sf=sf)
         rows_y.append(word_y)
 
     position = {}
