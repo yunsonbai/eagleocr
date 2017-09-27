@@ -5,17 +5,18 @@ from eagleocr.lib import imgCorrect
 from eagleocr.lib import imgDenoise
 
 
-def get_2v_img(source_img, sf=1.0):
+def denoise(source_img):
+    noiseimg = imgDenoise.denoisecolor(source_img)
+    return imgCorrect.contrast(noiseimg, p=2.0)
+
+
+def get_2v_img(img, sf=1.0):
     '''
     img: Image
     return:
         2v_img and sf(本次处理依据全局参数)
     '''
-    w, h = source_img.size
     var_s = 5000
-    noiseimg = imgDenoise.denoisecolor(source_img)
-    # img = imgCorrect.contrast(noiseimg, p=5.0)
-    img = imgCorrect.contrast(noiseimg, p=2.0)
     img = img.convert("L")
     img_array = numpy.array(img)
     sf = img_array.var() / var_s
